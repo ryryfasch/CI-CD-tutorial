@@ -14,7 +14,7 @@ app.get('/', function (req, res) {
 app.post('/', function (req, res) {
   // res.render('index0');
   console.log(req.body.city);
-  // res.send(req.body.city);
+  res.send(req.body.city);
 })
 
 app.listen(3000, function () {
