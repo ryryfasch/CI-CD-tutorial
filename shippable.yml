@@ -8,4 +8,5 @@ build:
     - echo 'CI running'
 
   on_success:
+    - git remote -v 
     - git push https://git.heroku.com/cicddemo123.git master
