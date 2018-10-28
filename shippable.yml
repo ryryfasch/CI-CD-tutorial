@@ -12,12 +12,18 @@ env:
 
 build:
   ci:
-    - pip install awscli
-
+    - echo "machine api.heroku.com" >> ~/.netrc
+    - echo "  login fasching.ryan@gmail.com" >> ~/.netrc
+    - echo "  password b3cac547-0ee8-44e3-ae8d-a80151d4ede2" >> ~/.netrc
+    - echo "machine git.heroku.com" >> ~/.netrc
+    - echo "  login fasching.ryan@gmail.com" >> ~/.netrc
+    - echo "  b3cac547-0ee8-44e3-ae8d-a80151d4ede2" >> ~/.netrc
+  #   - pip install awscli
+  #
   on_success:
-    - aws deploy create-deployment --application-name ShipDemo-App --github-location repository=ryryfasch/CI-CD-tutorial --deployment-group-name ShipDemo-Grp
+  #   - aws deploy create-deployment --application-name ShipDemo-App --github-location repository=ryryfasch/CI-CD-tutorial --deployment-group-name ShipDemo-Grp
 
-    # - git push -f https://git.heroku.com/cicddemo123.git master
+    - git push -f https://git.heroku.com/cicddemo123.git master
 # env:
 #   global:
 #     - APP_NAME=cicddemo123
