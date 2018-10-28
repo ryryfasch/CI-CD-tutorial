@@ -3,6 +3,9 @@ language: node_js
 node_js:
   - 0.10.33
 
+resources:
+  integration: key-value, key-value_pair
+
 build:
   ci:
     - echo 'CI running'
