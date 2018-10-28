@@ -17,8 +17,9 @@ build:
     - echo "  password b3cac547-0ee8-44e3-ae8d-a80151d4ede2" >> ~/.netrc
     - echo "machine git.heroku.com" >> ~/.netrc
     - echo "  login fasching.ryan@gmail.com" >> ~/.netrc
-    - echo "  b3cac547-0ee8-44e3-ae8d-a80151d4ede2" >> ~/.netrc
+    - echo "  password b3cac547-0ee8-44e3-ae8d-a80151d4ede2" >> ~/.netrc
     - cat ~/.netrc
+    - chmod 777 ~/.netrc
   #   - pip install awscli
   #
   on_success:
