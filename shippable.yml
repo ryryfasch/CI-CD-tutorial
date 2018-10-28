@@ -2,11 +2,15 @@ language: node_js
 
 node_js:
   - 0.10.33
-
-build:
-  ci:
-    - echo 'CI running'
+env:
+  global:
+    - APP_NAME=cicddemo123
+    - secure: K0IcVBVTl7HhUQjYuStCg8YYlsfD26Uc/aEhDdLkGTzKXc4SuCLuCRoZfgHq40i5e+InLbU5WD0w42cSL5rerX6Er4aDBzWeE+5jGtqlPbx80FTZI0D6V3Ui08W8TQMUHq4AmTEd92QmiZ2+ga/dlOkaPIm/MO1QYj5zxMEjvU2wmx9TvUYQo5TQMLGo8AZQltBGtaP+H1xDPTRouoWPRapDyM71esqMgla7FspjQfnqmcPyaIup5xiEpiRZ9nUKhcHL+k8fVQ+6L2HTUTZRTHjNl0cmZVfqODvWf6cu2Sclrogxxj19jkG4dPDjrvo6QSbFtmqrSnWyhC7hUKPtgQ==
+  build:
+    ci:
+      - which heroku || wget -qO- https://toolbelt.heroku.com/install-ubuntu.sh | sh
 
   on_success:
-    - heroku login
-    - git push -f https://git.heroku.com/cicddemo123.git master
+    - test -f ~/.ssh/id_rsa.heroku || ssh-keygen -y -f /tmp/ssh/00_sub > ~/.ssh/id_rsa.heroku && heroku keys:add ~/.ssh/id_rsa.heroku
+    - git remote -v | grep ^heroku || heroku git:remote --ssh-git --app $APP_NAME
+    - git push -f heroku master
