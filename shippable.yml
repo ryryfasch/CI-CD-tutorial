@@ -15,7 +15,7 @@ build:
     - pip install awscli
 
   on_success:
-    - aws deploy create-deployment --application-name ShipDemo-App --github-location repository=$REPO_NAME,commitId=$COMMIT --deployment-group-name $CD_DEPLOYMENT_GROUP
+    - aws deploy create-deployment --application-name ShipDemo-App --github-location repository=ryryfasch/CI-CD-tutorial --deployment-group-name ShipDemo-Grp
 
     # - git push -f https://git.heroku.com/cicddemo123.git master
 # env:
