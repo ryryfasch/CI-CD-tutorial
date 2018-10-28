@@ -3,15 +3,21 @@ language: node_js
 node_js:
   - 0.10.33
 
-resources:
-  integration: key-value, key-value_pair
+env:
+  global:
+    - AWS_ACCESS_KEY_ID=AKIAI4C63X6GHCBB4QXA
+    - AWS_DEFAULT_REGION=us-west-2
+    - secure: U1u/+u4TNHwu7gY9LYSrr+d/nERvgjmqe9jQZ/cZ6/NVTx+iRVE79qRn3qlPVAPgUDwtR040Wv+61ptbApRehuAIpPT2q/fouDBU0agfZMgtyIyOnVMvVbnHwM4wK4/HAhok7ZzOAnhA8ANBBSaDhxtnadrPVSiMaQPMnMvk6K7G28ycK5OLNUfD7+VBSuRfe5pxWOJsJgvQu6IppLk8HLmhCPlJTOgKi5HZmzsSBq/J17LxSu7c+reuVPfQRxyMha8Y1fs1o3+tPxrXOLHEeCgMhLd/Tp0pQUzN8CtBzQ4S9E8u53en13EDcxrsG2M4HFozT26I9/yjL0nRU7hSlA==
+    - CD_APP_NAME=ShipDemo-App CD_DEPLOYMENT_GROUP=ShipDemo-Grp REPO_NAME=ryryfasch/CI-CD-tutorial
 
 build:
   ci:
-    - echo 'CI running'
+    - pip install awscli
 
   on_success:
-    - git push -f https://git.heroku.com/cicddemo123.git master
+    - aws deploy create-deployment --application-name $CD_APP_NAME --github-location repository=$REPO_NAME,commitId=$COMMIT --deployment-group-name $CD_DEPLOYMENT_GROUP
+
+    # - git push -f https://git.heroku.com/cicddemo123.git master
 # env:
 #   global:
 #     - APP_NAME=cicddemo123
