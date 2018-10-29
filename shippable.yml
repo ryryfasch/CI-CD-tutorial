@@ -18,7 +18,7 @@ build:
   on_success:
   #   - aws deploy create-deployment --application-name ShipDemo-App --github-location repository=ryryfasch/CI-CD-tutorial --deployment-group-name ShipDemo-Grp
 
-    - git push -f https://git.heroku.com/cicddemo123.git master
+    - git push -f https://git.heroku.com/demo12345654.git master
 # env:
 #   global:
 #     - APP_NAME=cicddemo123
