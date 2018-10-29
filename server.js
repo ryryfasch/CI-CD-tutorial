@@ -8,7 +8,7 @@ app.use(express.static('public'));
 
 app.get('/', function (req, res) {
   // res.send('Hello World!')
-  res.render('index');
+  res.render('index0');
 })
 
 app.post('/', function (req, res) {
